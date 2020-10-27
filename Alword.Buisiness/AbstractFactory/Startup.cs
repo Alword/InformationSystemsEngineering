@@ -1,4 +1,5 @@
 ﻿using Alword.Buisiness.AbstractFactory.Abstractions;
+using Alword.Buisiness.Builder;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +10,7 @@ namespace Alword.Buisiness.AbstractFactory
 	public class Startup
 	{
 		private BaseAttributes attributes;
-		private BaseSettings settings;
+		private SettingsBuilder settings;
 		public Startup(BaseConfigurationFactory configurationFactory)
 		{
 			attributes = configurationFactory.CreateAttributes();
@@ -18,10 +19,11 @@ namespace Alword.Buisiness.AbstractFactory
 
 		public Context Run()
 		{
+			Debug.WriteLine($" Подключается {settings.Username}: {nameof(settings.UseSSL)}={settings.UseSSL}");
 			Context context = new Context()
 			{
 				connectionAttributes = attributes.SimpleAttribute,
-				connectionString = settings.ConnecionString
+				connectionString = settings.BuildConnectionString()
 			};
 			return context;
 		}

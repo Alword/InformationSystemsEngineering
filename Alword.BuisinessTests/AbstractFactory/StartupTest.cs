@@ -22,7 +22,7 @@ namespace Alword.BuisinessTests.AbstractFactory
 			var expectedContext = new Context
 			{
 				connectionAttributes = "Аттрибуты для работы с локальным хранилищем",
-				connectionString = "Подключаюсь к стенду разработки"
+				connectionString = "False:InMemory:TestDatabase"
 			};
 
 			Assert.Equal(expectedContext, atcualContex);
@@ -42,7 +42,7 @@ namespace Alword.BuisinessTests.AbstractFactory
 			var expectedContext = new Context
 			{
 				connectionAttributes = "Аттрибуты для работы с облаком",
-				connectionString = "Подключаюсь к рабочему серверу"
+				connectionString = "https:/Postgres/CloudBase"
 			};
 
 			Assert.Equal(expectedContext, atcualContex);

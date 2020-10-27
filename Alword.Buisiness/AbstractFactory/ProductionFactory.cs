@@ -1,6 +1,6 @@
 ﻿using Alword.Buisiness.AbstractFactory.Abstractions;
 using Alword.Buisiness.AbstractFactory.Attributes;
-using Alword.Buisiness.AbstractFactory.Settings;
+using Alword.Buisiness.Builder;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,9 +14,9 @@ namespace Alword.Buisiness.AbstractFactory
 			return new CloudAttributes();
 		}
 
-		public override BaseSettings CreateSettings()
+		public override SettingsBuilder CreateSettings()
 		{
-			return new ProductionSettings();
+			return new PgStorage();
 		}
 	}
 }
